@@ -1,0 +1,13 @@
+
+<div class="card" style="border: 1px solid black; rounded: 2px;">
+  <img src="/images/pic.jpg" alt="..." style="width: 100%;">
+  <div class="card-block">
+    <h4 class="card-title" style="padding-left: 2px;"><%= @event.name %></h4>
+    <p class="text-muted" style="padding-left: 2px;">planner: <%= @event.creator%></p>
+    <p class="text-muted" style="padding-left: 2px;"><%= @event.eventtime %></p>
+    <p class="card-text" style="padding-left: 2px;"><%= @event.location %></p>
+    <p class="card-text" style="padding-left: 2px;"><%= @event.description %></p>
+    <%= link "Back", to: event_path(@conn, :index), class: "btn btn-primary", style: "margin-left: 2px;" %>
+    <%= link "Edit", to: event_path(@conn, :edit, @event), class: "btn btn-primary", style: "margin-left: 2px;" %>
+  </div>
+</div>
