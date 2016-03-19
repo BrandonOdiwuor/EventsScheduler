@@ -15,7 +15,6 @@
           <p><%= String.slice(event.description, 0, 93)%>...</p>
           <p><a href="<%= event_path(@conn, :show, event) %>" class="btn btn-primary" role="button"> View </a>
             <a href="<%= event_path(@conn, :edit, event) %>" class="btn btn-primary" role="button"> Edit </a>
-
           </p>
         </div>
       </div>

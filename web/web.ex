@@ -52,6 +52,7 @@ defmodule EventsScheduler.Web do
       import EventsScheduler.Router.Helpers
       import EventsScheduler.ErrorHelpers
       import EventsScheduler.Gettext
+      import EventsScheduler.AuthenticationHelpers
     end
   end
 

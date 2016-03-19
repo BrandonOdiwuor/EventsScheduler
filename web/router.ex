@@ -18,7 +18,13 @@ defmodule EventsScheduler.Router do
 
     get "/", PageController, :index
 
+    resources "/students", StudentController
+
     resources "/events", EventController
+
+    resources "/sessions", SessionController, only: [:new, :create]
+
+    delete "/logout", AuthenticationController, :delete
   end
 
   # Other scopes may use custom stacks.
