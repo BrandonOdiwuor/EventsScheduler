@@ -4,6 +4,7 @@ defmodule EventsScheduler.Student do
   import Comeonin.Bcrypt, only: [hashpwsalt: 1]
 
   schema "students" do
+    has_many :events, EventsScheduler.Event
     field :name, :string
     field :year, :integer
     field :email, :string

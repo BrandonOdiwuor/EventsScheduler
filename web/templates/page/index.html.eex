@@ -8,7 +8,7 @@
           <p class="text-muted"><%= event.eventtime %></p>
           <p><%= String.slice(event.description, 0, 93)%>...</p>
           <p>
-            <p><a href="<%= event_path(@conn, :show, event) %>" class="btn btn-primary" role="button"> View </a></p>
+            <p><a href="<%= student_event_path(@conn, :show, event.student_id , event) %>" class="btn btn-primary" role="button"> View </a></p>
           </p>
         </div>
       </div>

@@ -9,16 +9,20 @@ defmodule EventsScheduler.SessionController do
     render conn, :new
   end
 
-  def create(conn, %{"session" => student_params}) do
-    Repo.get_by(Student, email: student_params["email"])
-      |> sign_in(student_params["password"], conn)
+  def create(conn, %{"session" => %{"email" => email, "password" => password}}) when not is_nil(email) and  not is_nil(password)do
+    Repo.get_by(Student, email: email)
+      |> sign_in(password, conn)
+  end
+
+  def create(conn, _) do
+    failed_login(conn)
   end
 
 
   defp sign_in(student, password, conn) when is_nil(student) do
     conn
-      |> put_flash(:error, "Email not registered, please check email")
-      |> redirect(to: session_path(conn, :new))
+      |> put_flash(:error, "Email not registered, please correct email or sign up")
+      |> redirect(to: student_path(conn, :new))
   end
 
   defp sign_in(student, password, conn) do
@@ -30,8 +34,15 @@ defmodule EventsScheduler.SessionController do
     else
       conn
         |> put_flash(:error, "Invalid email/password combination!")
-        |> redirect(to: session_path(conn, :new))
+        |> redirect(to: student_path(conn, :new))
     end
+  end
+
+  defp failed_login(conn) do
+    conn
+      |> put_flash(:error, "email or password cannot be empty")
+      |> redirect(to: session_path(conn, :new))
+
   end
 
 end

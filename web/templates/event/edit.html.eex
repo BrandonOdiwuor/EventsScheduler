@@ -1,6 +1,6 @@
 <h2>Edit event</h2>
 
 <%= render "form.html", changeset: @changeset,
-                        action: event_path(@conn, :update, @event) %>
+                        action: student_event_path(@conn, :update, @student, @event) %>
 
-<%= link "Back", to: event_path(@conn, :index) %>
+<%= link "Back", to: student_event_path(@conn, :index, @student) %>

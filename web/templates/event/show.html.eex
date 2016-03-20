@@ -7,7 +7,8 @@
     <p class="text-muted" style="padding-left: 2px;"><%= @event.eventtime %></p>
     <p class="card-text" style="padding-left: 2px;"><%= @event.location %></p>
     <p class="card-text" style="padding-left: 2px;"><%= @event.description %></p>
-    <%= link "Back", to: event_path(@conn, :index), class: "btn btn-primary", style: "margin-left: 2px;" %>
-    <%= link "Edit", to: event_path(@conn, :edit, @event), class: "btn btn-primary", style: "margin-left: 2px;" %>
+    <%#= link "Back", to: student_event_path(@conn, :index, @student), class: "btn btn-primary", style: "margin-left: 2px;" %>
+    <%#= link "Edit", to: student_event_path(@conn, :edit, @student, @event), class: "btn btn-primary", style: "margin-left: 2px;" %>
+    <%= link "Back", to: page_path(@conn, :index), class: "btn btn-primary", style: "margin-left: 2px;" %>
   </div>
 </div>

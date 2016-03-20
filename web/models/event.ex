@@ -2,6 +2,7 @@ defmodule EventsScheduler.Event do
   use EventsScheduler.Web, :model
 
   schema "events" do
+    belongs_to :student, EventsScheduler.Student
     field :name, :string
     field :location, :string
     field :eventtime, Ecto.DateTime

@@ -1,6 +1,6 @@
 <h2>New event</h2>
 
 <%= render "form.html", changeset: @changeset,
-                        action: event_path(@conn, :create) %>
+                        action: student_event_path(@conn, :create, @student) %>
 
-<%= link "Back", to: event_path(@conn, :index) %>
+<%= link "Back", to: student_event_path(@conn, :index, @student) %>
