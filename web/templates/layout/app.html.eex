@@ -50,7 +50,7 @@
                 </button>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                   <li role="presentation" style="line-height: 25px;">
-                    <%= link "Logout", to: authentication_path(@conn, :delete), method: :delete %>
+                    <%= link "Logout", to: authentication_path(@conn, :delete), style: "padding:17px;", method: :delete %>
                   </li>
                 </ul>
 
