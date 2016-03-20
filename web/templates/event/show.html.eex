@@ -1,14 +1,17 @@
-
-<div class="card" style="border: 1px solid black; rounded: 2px;">
-  <img src="/images/pic.jpg" alt="..." style="width: 100%;">
-  <div class="card-block">
-    <h4 class="card-title" style="padding-left: 2px;"><%= @event.name %></h4>
-    <p class="text-muted" style="padding-left: 2px;">planner: <%= @event.creator%></p>
-    <p class="text-muted" style="padding-left: 2px;"><%= @event.eventtime %></p>
-    <p class="card-text" style="padding-left: 2px;"><%= @event.location %></p>
-    <p class="card-text" style="padding-left: 2px;"><%= @event.description %></p>
-    <%#= link "Back", to: student_event_path(@conn, :index, @student), class: "btn btn-primary", style: "margin-left: 2px;" %>
-    <%#= link "Edit", to: student_event_path(@conn, :edit, @student, @event), class: "btn btn-primary", style: "margin-left: 2px;" %>
-    <%= link "Back", to: page_path(@conn, :index), class: "btn btn-primary", style: "margin-left: 2px;" %>
+<div class="row">
+<div class="col-md-12">
+  <div class="thumbnail">
+    <img src="/images/pic.jpg" alt="...">
+    <div class="caption">
+      <h4><%= @event.name %></h4>
+      <p class="text-muted">planner: <%= @event.creator%></p>
+      <p><%= @event.eventtime %></p>
+      <p>venue: <%= @event.location %></p>
+      <p>details: <%= @event.description %></p>
+      <%= link "Back to events", to: page_path(@conn, :index), class: "btn btn-primary" %>
+    </div>
   </div>
 </div>
+</div>
+<%#= link "Back", to: student_event_path(@conn, :index, @student), class: "btn btn-primary", style: "margin-left: 2px;" %>
+<%#= link "Edit", to: student_event_path(@conn, :edit, @student, @event), class: "btn btn-primary", style: "margin-left: 2px;" %>

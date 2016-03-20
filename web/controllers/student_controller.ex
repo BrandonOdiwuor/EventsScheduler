@@ -4,6 +4,7 @@ defmodule EventsScheduler.StudentController do
   alias EventsScheduler.Student
 
   plug :scrub_params, "student" when action in [:create, :update]
+  plug :admin_authentication when action in [:index, :delete]
 
   def index(conn, _params) do
     students = Repo.all(Student)
@@ -63,5 +64,24 @@ defmodule EventsScheduler.StudentController do
     conn
     |> put_flash(:info, "Student deleted successfully.")
     |> redirect(to: student_path(conn, :index))
+  end
+
+  def admin_authentication(conn, _) do
+    if get_session(conn, :current_student) do
+      student_id = get_session(conn, :current_student)
+      student = Repo.get(Student, student_id)
+      if student.email == "admineventScheduler@gmail.com" do
+        conn
+      else
+        conn
+          |> put_flash(:error, "You do not have admin rights")
+          |> redirect(to: page_path(conn, :index))
+          |> halt()
+      end
+    else
+      conn
+        |> put_flash(:error, "please log in")
+        |> redirect(to: page_path(conn, :index))
+    end
   end
 end

@@ -13,7 +13,7 @@ defmodule EventsScheduler.Event do
     timestamps
   end
 
-  @required_fields ~w(name location eventtime creator imagetag description)
+  @required_fields ~w(name location eventtime imagetag description)
   @optional_fields ~w()
 
   @doc """

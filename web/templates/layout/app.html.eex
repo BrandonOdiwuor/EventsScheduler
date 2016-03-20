@@ -57,19 +57,28 @@
               </div>
               <% else %>
               <div class="navbar-form navbar-right">
-                <%= form_for @conn, session_path(@conn, :create), [name: :session, class: "navbar-form"], fn f -> %>
-                  <div class="form-group">
-                    <%= email_input f, :email, class: "form-control", placeholder: "email" %>
-                  </div>
-                  <div class="form-group">
-                    <%= password_input f, :password, class: "form-control ", placeholder: "password" %>
-                  </div>
-                  <div class="form-group">
-                    <%= submit "Login", class: "btn btn-primary" %>
-                  </div>
-                <% end %>
-                <%#= link "Register", to: registration_path(@conn, :new), class: "btn btn-primary"%>
+                <%= link "Register", to: student_path(@conn, :new), class: "btn btn-primary"%>
+                <button class="btn btn-primary dropdown-toggle" type="button" id="menu1"
+                        data-toggle="dropdown" >Login
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                  <li role="presentation">
+                    <%= form_for @conn, session_path(@conn, :create), [name: :session, style: "padding:17px;"], fn f -> %>
+                      <div class="form-group" style="padding-bottom: 17px;">
+                        <%= email_input f, :email, class: "form-control", placeholder: "email" %>
+                      </div><br>
+                      <div class="form-group" style="padding-bottom: 17px;">
+                        <%= password_input f, :password, class: "form-control ", placeholder: "password" %>
+                      </div><br>
+                      <div class="form-group">
+                        <%= submit "Login", class: "btn btn-primary" %>
+                      </div>
+                    <% end %>
+                  </li>
+                </ul>
               </div>
+
               <% end %>
 
               <%#</div>%>
@@ -84,6 +93,21 @@
 
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
+
+        <div id="footer">
+            <div class="container">
+              <p class="muted credit">Copyright © Brandon Wayne Odiwuor 2016</p>
+            </div>
+        </div>
+        <style>
+            #footer {
+              height: 60px;
+            }
+            #footer {
+              background-color: #eee;
+            }
+        </style>
+
       </main>
 
     </div> <!-- /container -->

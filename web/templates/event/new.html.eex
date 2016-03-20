@@ -3,4 +3,4 @@
 <%= render "form.html", changeset: @changeset,
                         action: student_event_path(@conn, :create, @student) %>
 
-<%= link "Back", to: student_event_path(@conn, :index, @student) %>
+<%= link "Back to my events", to: student_event_path(@conn, :index, @student), class: "btn btn-primary" %>

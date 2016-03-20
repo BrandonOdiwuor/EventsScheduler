@@ -1,7 +1,8 @@
 defmodule EventsScheduler.EventController do
   use EventsScheduler.Web, :controller
-
   alias EventsScheduler.Event
+  alias EventsScheduler.Student
+  import Ecto.Changeset, only: [put_change: 3]
 
   plug :scrub_params, "event" when action in [:create, :update]
   plug :assign_student
@@ -23,8 +24,8 @@ defmodule EventsScheduler.EventController do
       conn.assigns[:student]
       |> build_assoc(:events)
       |> Event.changeset(event_params)
-
-    case Repo.insert(changeset) do
+      new_changeset = put_change(changeset, :creator, current_student(conn).name)
+    case Repo.insert(new_changeset) do
       {:ok, _event} ->
         conn
         |> put_flash(:info, "Event created successfully.")
@@ -95,6 +96,11 @@ defmodule EventsScheduler.EventController do
         |> put_flash(:error, "please log in")
         |> redirect(to: page_path(conn, :index))
     end
+  end
+
+  defp current_student(conn) do
+    student_id = get_session(conn, :current_student)
+    Repo.get(Student, student_id)
   end
 
 
